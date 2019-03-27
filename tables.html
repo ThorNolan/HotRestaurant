@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Star Wars - Express</title>
+  <title>Hot Restaurant</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +16,11 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
+      <h1><span class="fa fa-fire"></span>Hot Restaurant</h1>
+      <h3>Current Reservations and Waiting List</h3>
       <hr>
-      <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> Search Characters</button></a>
-      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New Character</button></a>
+      <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-home"></span></button></a>
+      <a href="/reserve"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
     </div>
     <div class="row">
 
@@ -28,7 +28,7 @@
 
         <div class="card">
           <div class="card-header">
-            <strong>Character Database</strong></h3>
+            <strong>Current Reservations</strong></h3>
           </div>
           <div class="card-body">
             <ul id="character-section" class="list-group">
@@ -41,7 +41,7 @@
 
     <script type="text/javascript">
 
-      $.get("/api/characters", function(data) {
+      $.get("/api/tables", function(data) {
         for (var i = 0; i < data.length; i++) {
           console.log(data[i]);
           var listGroupItem = $("<li class='list-group-item'>");
