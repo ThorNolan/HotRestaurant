@@ -33,7 +33,7 @@ app.get("/api/tables/:table", function(req, res) {
   console.log(table);
 
   for (var i = 0; i < tables.length; i++) {
-    if (table === tables[i].resName) {
+    if (table === tables[i].uniqueId) {
       return res.json(tables[i]);
     }
   }
@@ -43,8 +43,6 @@ app.get("/api/tables/:table", function(req, res) {
 
 app.post("/api/tables", function(req, res) {
   var newTable = req.body;
-
-  newTable.id = newTable.resName.replace(/\s+/g, "").toLowerCase();
 
   console.log(newTable);
 
