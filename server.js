@@ -27,6 +27,24 @@ app.get("/api/tables", function(req, res) {
   return res.json(tables);
 });
 
+app.get("/api/wait", function(req, res) {
+  return res.json(waitlist);
+});
+
+app.get("/api/tables/:table", function(req, res) {
+  var table = req.params.table;
+
+  console.log(table);
+
+  for (var i = 0; i < tables.length; i++) {
+    if (table === tables[i].uniqueId) {
+      return res.json(tables[i]);
+    }
+  }
+
+  return res.json(false);
+});
+
 app.get("/api/tables/:table", function(req, res) {
   var table = req.params.table;
 
@@ -51,8 +69,6 @@ app.post("/api/tables", function(req, res) {
   } else {
     waitlist.push(newTable);
   }
-
-  tables.push(newTable);
 
   res.json(newTable);
 });
