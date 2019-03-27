@@ -16,16 +16,15 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
+      <h1>Reserve your table now!</h1>
       <hr>
       <a href="/">
         <button class="btn btn-danger btn-lg">
-          <span class="fa fa-eye"></span> Search Characters</button>
+          <span class="fa fa-eye"></span> return home</button>
       </a>
       <a href="/all">
         <button class="btn btn-danger btn-lg">
-          <span class="fa fa-th-list"></span> All Characters</button>
+          <span class="fa fa-th-list"></span> view reservation list</button>
       </a>
     </div>
     <div class="row">
@@ -74,7 +73,7 @@
 
   <script type="text/javascript">
     // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
+    $("#add-btn").on("click", function (event) {
       event.preventDefault();
 
       var newCharacter = {
@@ -86,7 +85,7 @@
 
       // Question: What does this code do??
       $.post("/api/characters", newCharacter)
-        .then(function(data) {
+        .then(function (data) {
           console.log(data);
           alert("Adding character...");
         });
