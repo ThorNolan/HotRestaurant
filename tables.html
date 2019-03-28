@@ -22,7 +22,8 @@
       <hr>
 
       <div class="text-center">
-        <a href="/reserve"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
+        <a href="/reserve"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make
+            Reservation</button></a>
         <a href="/"><button class="btn btn-light btn-lg"><span class="fa fa-home"></span></button></a>
         <br>
         <h3 class="text-center">Current Reservations and Waiting List</h3>
@@ -46,54 +47,55 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
-            <div class="card-header">
-                <strong>Waiting List</strong></h3>
-            </div>
-            <div class="card-body">
-                <ul id="waitlist" class="list-group">
-    
-                </ul>
-              </div>
-            </div>
+      <div class="col-12">
+        <div class="card-header">
+          <strong>Waiting List</strong></h3>
         </div>
+        <div class="card-body">
+          <ul id="waitlist" class="list-group">
+
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="text-center">
-      <a href="/api/tables">API Table Link</a> |
-      <a href="/reserve">API Wait List</a>
-    </div>  
-   
-    <script type="text/javascript">
+  <div class="text-center">
+    <a href="/clear">Clear Tables</a> |
+    <a href="/api/tables">API Table Link</a> |
+    <a href="/reserve">API Wait List</a>
+  </div>
 
-      $.get("/api/tables", function(data) {
-        for (var i = 0; i < data.length; i++) {
-          console.log(data[i]);
-          var listGroupItem = $("<li class='list-group-item'>");
+  <script type="text/javascript">
 
-          listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-          listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
-          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
-          listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+    $.get("/api/tables", function (data) {
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        var listGroupItem = $("<li class='list-group-item'>");
 
-          $("#reservations").append(listGroupItem);
-        }
-      });
+        listGroupItem.append($("<h2>").text("Name: " + data[i].name));
+        listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
+        listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+        listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
 
-      $.get("/api/wait", function(data) {
-        for (var i = 0; i < data.length; i++) {
-          console.log(data[i]);
-          var listGroupItem = $("<li class='list-group-item'>");
+        $("#reservations").append(listGroupItem);
+      }
+    });
 
-          listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-          listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
-          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
-          listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+    $.get("/api/wait", function (data) {
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        var listGroupItem = $("<li class='list-group-item'>");
 
-          $("#waitlist").append(listGroupItem);
-        }
-      });
-    </script>
+        listGroupItem.append($("<h2>").text("Name: " + data[i].name));
+        listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
+        listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+        listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+
+        $("#waitlist").append(listGroupItem);
+      }
+    });
+  </script>
 
 </body>
 

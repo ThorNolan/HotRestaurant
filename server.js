@@ -1,4 +1,4 @@
-// phase 3
+// phase 4
 
 var express = require("express");
 var path = require("path");
@@ -18,6 +18,12 @@ app.get("/", function(req, res) {
 
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/clear", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+  tables = [];
+  waitlist = [];
 });
 
 app.get("/viewtables", function(req, res) {
