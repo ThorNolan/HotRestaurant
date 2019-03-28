@@ -37,10 +37,10 @@
           <div class="card-header">
             <strong>Current Reservations</strong></h3>
           </div>
-          <div class="card-body">
-            <ul id="reservations" class="list-group">
+          <div class="body">
+            <div id="reservations" class="list-group">
 
-            </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -51,10 +51,10 @@
         <div class="card-header">
           <strong>Waiting List</strong></h3>
         </div>
-        <div class="card-body">
-          <ul id="waitlist" class="list-group">
+        <div class="body">
+          <div id="waitlist" class="list-group">
 
-          </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -69,14 +69,21 @@
   <script type="text/javascript">
 
     $.get("/api/tables", function (data) {
+      
       for (var i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        var listGroupItem = $("<li class='list-group-item'>");
+        //console.log(data[i]);
+        console.log(data.indexOf(data[i]));
+        var listGroupItem = $("<div class='well'>");
 
-        listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-        listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
-        listGroupItem.append($("<h3>").text("Email: " + data[i].email));
-        listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+        var listGroupTwo = $("<h2>").text(data.indexOf(data[i]) + 1);
+            listGroupTwo.addClass("label label-primary");
+          
+        var listGroupThree = $("<h2>").text("Name: " + data[i].name);
+            listGroupItem.append(listGroupTwo, listGroupThree);
+
+        //listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
+        //listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+        //listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
 
         $("#reservations").append(listGroupItem);
       }
@@ -84,13 +91,17 @@
 
     $.get("/api/wait", function (data) {
       for (var i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        var listGroupItem = $("<li class='list-group-item'>");
+        console.log(data.indexOf(data[i]));
+        var listGroupItem = $("<div class='well'>");
 
-        listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-        listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
-        listGroupItem.append($("<h3>").text("Email: " + data[i].email));
-        listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+        var listGroupTwo = $("<h2>").text(data.indexOf(data[i]) + 1);
+            listGroupTwo.addClass("label label-primary");
+          
+        var listGroupThree = $("<h2>").text("Name: " + data[i].name);
+            listGroupItem.append(listGroupTwo, listGroupThree);
+        //listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phoneNumber));
+        //listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+        //listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
 
         $("#waitlist").append(listGroupItem);
       }
