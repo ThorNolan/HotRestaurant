@@ -1,3 +1,4 @@
+// phase 4
 
 var express = require("express");
 var path = require("path");
@@ -19,12 +20,36 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
+app.get("/clear", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+  tables = [];
+  waitlist = [];
+});
+
 app.get("/viewtables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 app.get("/api/tables", function(req, res) {
   return res.json(tables);
+});
+
+app.get("/api/wait", function(req, res) {
+  return res.json(waitlist);
+});
+
+app.get("/api/tables/:table", function(req, res) {
+  var table = req.params.table;
+
+  console.log(table);
+
+  for (var i = 0; i < tables.length; i++) {
+    if (table === tables[i].uniqueId) {
+      return res.json(tables[i]);
+    }
+  }
+
+  return res.json(false);
 });
 
 app.get("/api/tables/:table", function(req, res) {
@@ -51,8 +76,6 @@ app.post("/api/tables", function(req, res) {
   } else {
     waitlist.push(newTable);
   }
-
-  tables.push(newTable);
 
   res.json(newTable);
 });
