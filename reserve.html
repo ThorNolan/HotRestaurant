@@ -28,7 +28,7 @@
         <button class="btn btn-danger btn-lg">
           <span class="fa fa-list-alt"></span> Reservations list</button>
       </a>
-      
+
       <h3>Give us your details below</h3>
     </div>
     <div class="row">
@@ -80,7 +80,7 @@
 
   <script type="text/javascript">
     // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
+    $("#add-btn").on("click", function (event) {
       event.preventDefault();
 
       var newTable = {
@@ -92,10 +92,19 @@
 
       // Question: What does this code do??
       $.post("/api/tables", newTable)
-        .then(function(data) {
-          console.log(data);
-          alert("Adding your reservation...");
-      });
+        .then(function (data) {
+          $.get("/api/tables", function (data) {
+            console.log(data[4] = true);
+            if (data[4] === true) {
+              alert("sorry you've been waitlisted")
+            }
+            else {
+              console.log(data);
+              alert("Adding your reservation...");
+            }
+          })
+
+        });
 
     });
 
